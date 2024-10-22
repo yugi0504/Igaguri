@@ -5,6 +5,8 @@ using TMPro;
 public class PointControler : MonoBehaviour
 {
     int point;
+    int handledPoint;
+    int handledCount;
 
     GameObject pointObject;
 
@@ -13,6 +15,8 @@ public class PointControler : MonoBehaviour
     {
         pointObject = GameObject.Find("Point");
         point = 0;
+        handledPoint = 100;
+        handledCount = 1;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -20,6 +24,11 @@ public class PointControler : MonoBehaviour
         if(other.CompareTag("igaguri"))
         {
             point += 10;
+            if(point%handledPoint==handledCount )
+            {
+                point *= 3;
+                handledCount++;
+            }
         }
     }
 

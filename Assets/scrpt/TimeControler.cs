@@ -23,9 +23,17 @@ public class TimeControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //時間の加算
-        time += Time.deltaTime;
-        //文字の更新
-        timer.GetComponent<TextMeshProUGUI>().text ="TimeLimit:"+ time.ToString("f2");
+        if(CameraControler.isGameTimer)
+        {
+            //時間の加算
+            time += Time.deltaTime;
+            //文字の更新
+            timer.GetComponent<TextMeshProUGUI>().text = "TimeLimit:" + time.ToString("f2");
+            //制限時間になったら終了する
+            if (time > timeLimit)
+            {
+                SceneControler.GameResult();
+            }
+        }
     }
 }

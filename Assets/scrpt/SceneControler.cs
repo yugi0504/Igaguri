@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneControler : MonoBehaviour
 {
-
-    public void GameHome()
+    public static SceneControler Instance {  get; private set; }
+    public static void GameHome()
     {
         SceneManager.LoadScene("Start");
     }
-    public void ReStart()
+    public static void ReStart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void GameStart()
+    public static void GameStart()
     {
         SceneManager.LoadScene("GameScreen");
     }
-    public void GameResult()
+    public static void GameResult()
     {
         SceneManager.LoadScene("Result");
     }

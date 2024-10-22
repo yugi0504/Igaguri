@@ -7,8 +7,9 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class ogaguriContloller : MonoBehaviour
 {
-    private int point;
+    public static int point;
     GameObject pointObject;
+    public const int DestroyTimer = 5;
 
     public void Shoot(Vector3 dir)
     {
@@ -18,10 +19,9 @@ public class ogaguriContloller : MonoBehaviour
     {
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<ParticleSystem>().Play();
-
         // スコアの加算
-           point += 10; // ポイントを加算
-        
+        point += 10; // ポイントを加算
+        Destroy(gameObject,DestroyTimer);
     }
     void Start()
     {
